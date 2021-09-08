@@ -1,15 +1,19 @@
+// Importação de módulos
 const express = require('express')
-const consign = require('consign');
+const consign = require('consign')
 const bodyParser = require('body-parser')
 
+// Exportação de função para 
 module.exports = () => {
-    const app = express()
-
-    app.use(bodyParser.json())
-
-    consign()
-        .include('controllers')
-        .into(app)
-
-    return app
+  // Cria uma aplicação Express
+  const app = express()
+ 
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({ extended: true }))
+ 
+  consign()
+    .include('controllers')
+    .into(app)
+ 
+  return app
 }
